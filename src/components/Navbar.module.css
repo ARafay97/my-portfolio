@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #111;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu li {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.menu li:hover {
+  color: #00bcd4;
+}
+
+.toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+.card {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
