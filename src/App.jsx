@@ -8,12 +8,14 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <div style={{ flex: 1 }}>
+  <Hero />
+</div>
       <Projects />
       <Contact />
       <Footer />
     </>
   );
 }
- 
+
 export default App;

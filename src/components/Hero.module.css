@@ -1,13 +1,4 @@
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-  padding: 2rem;
-  background: linear-gradient(to right, #111, #333);
-  color: white;
-  text-align: center;
-}
+
 
 .container {
   max-width: 800px;
@@ -62,8 +53,22 @@
   color: #111;
 }
 
-
-.card {
-  background: var(--card-bg);
+.hero {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #111, #333);
   color: var(--text-color);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: none;
+  padding: 0 2rem;
 }
