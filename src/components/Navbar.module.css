@@ -9,8 +9,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 0rem 0rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+}
+button {
+    margin: 20px;
+}
+
+h1 {
+    margin:20px;
 }
 
 .logo {
