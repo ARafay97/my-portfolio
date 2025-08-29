@@ -2,19 +2,19 @@ import styles from './Projects.module.css';
 
 const projects = [
   {
-    title: "Instagram Clone",
-    description: "A social media front-end built using React and Tailwind CSS.",
-    link: "https://github.com/yourusername/instagram-clone"
+    title: "Study AI",
+    description: "A powerful study tool built using React and Tailwind CSS.",
+    link: "https://github.com/ARafay97/StudyAI"
   },
   {
-    title: "Train Management System",
-    description: "Java project simulating train operations and bookings using databases.",
+    title: "Swipe",
+    description: "A social media app powered with algorithms and latest react libraries",
     link: "https://github.com/yourusername/train-management"
   },
   {
-    title: "Veterinary Management System",
-    description: "Java & MySQL-based system with SOLID principles applied.",
-    link: "https://github.com/yourusername/vet-system"
+    title: "Calculator",
+    description: "Simple React Powered Calculator",
+    link: "https://github.com/ARafay97/Calculator"
   }
 ];
 
