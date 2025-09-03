@@ -125,6 +125,7 @@ export default function Navbar() {
           <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
           <li><a href="#sites" onClick={() => setMenuOpen(false)}>E-Commerce</a></li>
           <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+          <li><a href="https://www.linkedin.com/in/abdul-rafay-aa66132a7/" onClick={() => setMenuOpen(false)}>Linkedin</a></li>
         </ul>
       </div>
     </nav>
