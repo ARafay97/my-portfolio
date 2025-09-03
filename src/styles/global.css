@@ -1,8 +1,7 @@
-/* Global Styles */
+/* Global reset */
 * {
   box-sizing: border-box;
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -26,6 +25,11 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background 0.3s ease, color 0.3s ease;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: clip; /* prevent horizontal scroll, works better on mobile */
 }
 
 a {
@@ -39,10 +43,23 @@ ul {
   margin: 0;
 }
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/* Only #root should be flex */
+#root {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  min-width: 0; /* prevents flex children from forcing overflow */
+}
+
+/* Ensure media never overflows */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Word wrap for long text/URLs */
+#root * {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }

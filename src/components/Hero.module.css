@@ -1,101 +1,25 @@
-
-
-.container {
-  max-width: 800px;
-}
-
-.heading {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.subheading {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #ccc;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btnPrimary,
-.btnSecondary {
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-.btnPrimary {
-  background-color: #00bcd4;
-  color: #111;
-}
-
-.btnSecondary {
-  background-color: transparent;
-  border: 2px solid #00bcd4;
-  color: #00bcd4;
-}
-
-.btnPrimary:hover {
-  background-color: #00acc1;
-}
-
-.btnSecondary:hover {
-  background-color: #00bcd4;
-  color: #111;
-}
-
 .hero {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to right, #111, #333);
-  color: var(--text-color);
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.container {
   width: 100%;
-  max-width: none;
-  padding: 0 2rem;
+  min-height: 100dvh;
+  display: flex; align-items: center;
+  background: linear-gradient(90deg, #111, #333);
+  color: var(--text);
+  overflow: clip;
+  text-align: center;
 }
+.heading { font-size: 2.5rem; margin-bottom: 1rem; }
+.subheading { font-size: 1.2rem; margin-bottom: 2rem; color: #ccc; }
+.buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+.btnPrimary, .btnSecondary { padding:.75rem 1.5rem; font-weight:600; border:none; cursor:pointer; text-decoration:none; border-radius:4px; transition: background .3s ease; }
+.btnPrimary { background:#00bcd4; color:#111; }
+.btnSecondary { background:transparent; border:2px solid #00bcd4; color:#00bcd4; }
+.btnPrimary:hover { background:#00acc1; }
+.btnSecondary:hover { background:#00bcd4; color:#111; }
 
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    padding: 4rem 1rem;
-    text-align: center;
-  }
-
-  .heading {
-    font-size: 2rem;
-  }
-
-  .subheading {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .btnPrimary, .btnSecondary {
-    width: 100%;
-    max-width: 250px;
-  }
+  .hero { padding: 4rem 1rem; }
+  .heading { font-size: 2rem; }
+  .subheading { font-size: 1rem; margin-bottom: 1.5rem; }
+  .buttons { flex-direction: column; gap:1rem; }
+  .btnPrimary, .btnSecondary { width:100%; max-width:250px; margin:0 auto; }
 }

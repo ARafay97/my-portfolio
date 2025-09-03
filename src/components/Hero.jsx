@@ -3,11 +3,8 @@ import styles from './Hero.module.css';
 
 function Hero() {
   return (
-
-
     <section className={styles.hero} id="home">
-      <div style={{ width: '100%' }}>
-
+      <div className="container">
         <motion.h1
           className={styles.heading}
           initial={{ opacity: 0, y: -30 }}
@@ -39,5 +36,4 @@ function Hero() {
     </section>
   );
 }
-
 export default Hero;

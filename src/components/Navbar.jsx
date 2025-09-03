@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
-import { Link } from 'react-router-dom';
 
 function Navbar() {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('darkMode') === 'true';
-  });
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle('dark', darkMode);
@@ -14,21 +12,37 @@ function Navbar() {
 
   return (
     <nav className={styles.nav}>
-      <h1 className={styles.logo}>MyPortfolio</h1>
-<ul className={styles.menu}>
-  <li><a href="#home">Home</a></li>
-  <li><a href="#projects">Projects</a></li>
-  <li><a href="#contact">Contact</a></li>
-</ul>
+      <div className={styles.navInner}>
+        <h1 className={styles.logo}>MyPortfolio</h1>
 
-      <button
-        className={styles.toggle}
-        onClick={() => setDarkMode(prev => !prev)}
-      >
-        {darkMode ? 'DARK' : 'LIGHT'}
-      </button>
+        <ul className={`${styles.menu} ${menuOpen ? styles.showMenu : ''}`}>
+          <li><a href="#home" className={styles.link}>Home</a></li>
+          <li><a href="#projects" className={styles.link}>Projects</a></li>
+          <li><a href="#contact" className={styles.link}>Contact</a></li>
+        </ul>
+
+        <div className={styles.actions}>
+          <button
+            className={styles.toggle}
+            onClick={() => setDarkMode(v => !v)}
+            aria-pressed={darkMode}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? 'DARK' : 'LIGHT'}
+          </button>
+
+          <button
+            className={styles.hamburger}
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label="Toggle menu"
+          >
+            <span className={styles.bar}></span>
+            <span className={styles.bar}></span>
+            <span className={styles.bar}></span>
+          </button>
+        </div>
+      </div>
     </nav>
   );
 }
-
 export default Navbar;
