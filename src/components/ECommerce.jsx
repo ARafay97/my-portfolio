@@ -1,9 +1,9 @@
-import styles from "./ECommerce.module.css"
+import styles from "./Ecommerce.module.css"
 
 const sites = [
-  { title: "Panecci", description: "A powerful study tool built using React and Tailwind CSS.", link: "https://www.tiktok.com/@panecci" },
-  { title: "AurakizStudio", description: "A social media app powered with algorithms and latest react libraries.", link: "https://www.etsy.com/shop/AURAKIZStudio" },
-  { title: "Panecci Perfumes", description: "Simple React Powered Calculator.", link: "https://www.tiktok.com/@panecci" }
+  { title: "Panecci", description: "An E Commerce website and Tiktok Shop.", link: "https://www.tiktok.com/@panecci" },
+  { title: "AurakizStudio", description: "Etsy Shop specialising in various products", link: "https://www.etsy.com/shop/AURAKIZStudio" },
+  { title: "Panecci Perfumes", description: "A sub branch from Panecci, specialising in perfumes", link: "https://www.tiktok.com/@panecci" }
 ];
 
 function Sites() {
