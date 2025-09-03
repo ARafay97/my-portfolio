@@ -30,7 +30,7 @@ function Hero() {
           transition={{ delay: 0.6 }}
         >
           <a href="#projects" className={styles.btnPrimary}>View Projects</a>
-          <a href="#contact" className={styles.btnSecondary}>Contact Me</a>
+          <a href="https://www.credly.com/users/abdul-rafay.f85aca10" className={styles.btnSecondary}>Certifications</a>
         </motion.div>
       </div>
     </section>

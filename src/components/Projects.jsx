@@ -4,6 +4,7 @@ const projects = [
   { title: "Study AI", description: "A powerful study tool built using React and Tailwind CSS.", link: "https://github.com/ARafay97/StudyAI" },
   { title: "Swipe", description: "A social media app powered with algorithms and latest react libraries.", link: "https://github.com/yourusername/train-management" },
   { title: "Calculator", description: "Simple React Powered Calculator.", link: "https://github.com/ARafay97/Calculator" }
+  
 ];
 
 function Projects() {

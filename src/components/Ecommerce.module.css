@@ -1,0 +1,7 @@
+.sites { padding: 4rem 0; background: var(--card-bg); color: var(--text); }
+.heading { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+.grid { display:grid; gap:2rem; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); min-width:0; }
+.card { background:#fff; color:#111; padding:1.5rem; border-radius:8px; box-shadow:0 0 12px rgba(0,0,0,.05); transition: transform .3s ease; }
+.card:hover { transform: translateY(-5px); }
+.card p { color:#444; margin-bottom:1rem; }
+.card a { color:#00bcd4; font-weight:700; text-decoration:none; }
