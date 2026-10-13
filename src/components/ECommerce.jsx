@@ -1,27 +1,27 @@
-import styles from "./Ecommerce.module.css"
+import { ventures } from '../data';
+import { Section, Reveal, ArrowIcon } from './ui';
 
-const sites = [
-  { title: "Panecci", description: "An E Commerce website and Tiktok Shop.", link: "https://www.tiktok.com/@panecci" },
-  { title: "AurakizStudio", description: "Etsy Shop specialising in various products", link: "https://www.etsy.com/shop/AURAKIZStudio" },
-  { title: "Panecci Perfumes", description: "A sub branch from Panecci, specialising in perfumes", link: "https://www.tiktok.com/@panecci" }
-];
-
-function Sites() {
+export default function ECommerce() {
   return (
-    <section className={styles.sites} id="sites">
-      <div className="container">
-        <h2 className={styles.heading}>E Commerce Websites</h2>
-        <div className={styles.grid}>
-          {sites.map(p => (
-            <article key={p.title} className={styles.card}>
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <a href={p.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.title} `}>View</a>
-            </article>
-          ))}
-        </div>
+    <Section id="ventures" index="04" title="Ventures">
+      <div className="grid gap-px overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 md:grid-cols-3">
+        {ventures.map((v, i) => (
+          <Reveal key={v.title} delay={i * 0.08} className="bg-white">
+            <a
+              href={v.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full flex-col p-7 transition-colors hover:bg-neutral-950 hover:text-white"
+            >
+              <div className="flex items-start justify-between">
+                <h3 className="text-xl font-bold tracking-tight">{v.title}</h3>
+                <ArrowIcon className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </div>
+              <p className="mt-3 text-sm text-neutral-500 group-hover:text-neutral-400">{v.description}</p>
+            </a>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
-export default Sites;

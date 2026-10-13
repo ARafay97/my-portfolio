@@ -1,133 +1,84 @@
-/*import { useEffect, useState } from 'react';
-import styles from './Navbar.module.css';
+import { useEffect, useState } from 'react';
 
-function Navbar() {
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    document.body.classList.toggle('dark', darkMode);
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-
-  return (
-    <nav className={styles.nav}>
-      <div className={styles.navInner}>
-        <h1 className={styles.logo}>MyPortfolio</h1>
-
-        <ul className={`${styles.menu} ${menuOpen ? styles.showMenu : ''}`}>
-          <li><a href="#home" className={styles.link}>Home</a></li>
-          <li><a href="#projects" className={styles.link}>Projects</a></li>
-          <li><a href="#sites" className={styles.link}>E-Commerce</a></li>
-          <li><a href="#contact" className={styles.link}>Contact</a></li>
-        </ul>
-
-        <div className={styles.actions}>
-          <button
-            className={styles.toggle}
-            onClick={() => setDarkMode(v => !v)}
-            aria-pressed={darkMode}
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? 'DARK' : 'LIGHT'}
-          </button>
-
-          <button
-            className={styles.hamburger}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label="Toggle menu"
-          >
-            <span className={styles.bar}></span>
-            <span className={styles.bar}></span>
-            <span className={styles.bar}></span>
-          </button>
-        </div>
-      </div>
-    </nav>
-  );
-}
-export default Navbar;
-*/
-
-import { useEffect, useMemo, useState } from 'react';
-import styles from './Navbar.module.css';
-
-function safeStorageGet(key, fallback) {
-  try {
-    const v = localStorage.getItem(key);
-    return v === null ? fallback : v === 'true';
-  } catch { return fallback; }
-}
-function safeStorageSet(key, value) {
-  try { localStorage.setItem(key, String(value)); } catch {}
-}
+const links = [
+  { href: '#projects', label: 'Projects' },
+  { href: '#certifications', label: 'Certifications' },
+  { href: '#achievements', label: 'Achievements' },
+  { href: '#ventures', label: 'Ventures' },
+  { href: '#contact', label: 'Contact' },
+];
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(() => safeStorageGet('darkMode', false));
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    document.body.classList.toggle('dark', darkMode);
-    safeStorageSet('darkMode', darkMode);
-  }, [darkMode]);
-
-  // Close menu on hash navigation
-  useEffect(() => {
-    const onHash = () => setMenuOpen(false);
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <nav className={styles.nav} role="navigation" aria-label="Main">
-      <div className={styles.navInner}>
-        <a href="#home" className={styles.logo}>MyPortfolio</a>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open ? 'border-b border-neutral-200 bg-white/85 backdrop-blur-md' : 'border-b border-transparent bg-white'
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Main">
+        <a href="#home" className="text-sm font-bold tracking-tight">
+          ABDUL RAFAY<span className="text-neutral-400">.</span>
+        </a>
 
-        <ul className={`${styles.menu} ${menuOpen ? styles.showMenu : ''}`}>
-          <li><a href="#home" className={styles.link} onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#projects" className={styles.link} onClick={() => setMenuOpen(false)}>Projects</a></li>
-          <li><a href="#sites" className={styles.link} onClick={() => setMenuOpen(false)}>E-Commerce</a></li>
-          <li><a href="#contact" className={styles.link} onClick={() => setMenuOpen(false)}>Contact</a></li>
+        <ul className="hidden items-center gap-8 md:flex">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a href={l.href} className="text-sm text-neutral-500 transition-colors hover:text-neutral-950">
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#contact"
+              className="rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+            >
+              Get in touch
+            </a>
+          </li>
         </ul>
 
-        <div className={styles.actions}>
-          <button
-            type="button"
-            className={styles.toggle}
-            onClick={() => setDarkMode(v => !v)}
-            aria-pressed={darkMode}
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? 'DARK' : 'LIGHT'}
-          </button>
-
-          <button
-            type="button"
-            className={styles.hamburger}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-          >
-            <span className={styles.bar} />
-            <span className={styles.bar} />
-            <span className={styles.bar} />
-          </button>
-        </div>
-      </div>
+        <button
+          type="button"
+          className="-mr-2 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+        >
+          <span className={`h-px w-5 bg-neutral-950 transition-transform duration-300 ${open ? 'translate-y-[3.5px] rotate-45' : ''}`} />
+          <span className={`h-px w-5 bg-neutral-950 transition-transform duration-300 ${open ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
+        </button>
+      </nav>
 
       <div
         id="mobile-menu"
-        className={`${styles.mobilePanel} ${menuOpen ? styles.mobileOpen : ''}`}
+        className={`overflow-hidden transition-[max-height] duration-300 md:hidden ${open ? 'max-h-96' : 'max-h-0'}`}
       >
-        <ul className={styles.mobileList}>
-          <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-          <li><a href="#sites" onClick={() => setMenuOpen(false)}>E-Commerce</a></li>
-          <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-          <li><a href="https://www.linkedin.com/in/abdul-rafay-aa66132a7/" onClick={() => setMenuOpen(false)}>Linkedin</a></li>
+        <ul className="flex flex-col px-5 pb-6">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="block border-b border-neutral-100 py-3 text-lg font-medium"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
-    </nav>
+    </header>
   );
 }
